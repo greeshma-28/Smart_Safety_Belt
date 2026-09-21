@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About - SafeBelt</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">🛡</div>
+
+        <div>
+            <h2>SafeBelt</h2>
+            <span>Smart Safety System</span>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/history">History</a>
+
+        <a href="/contacts">Contacts</a>
+
+        <a href="/about" class="active">About</a>
+
+        <a href="/login" class="login-link">Logout</a>
+
+    </div>
+
+</nav>
+
+
+
+<main class="about-page">
+
+
+<!-- ABOUT HEADER -->
+
+<section class="about-header">
+
+    <div class="about-label">
+        ABOUT SAFEBELT
+    </div>
+
+    <h1>
+        Smart technology for
+        <span>safer lives.</span>
+    </h1>
+
+    <p>
+        SafeBelt is an IoT-based women's safety system
+        designed to provide quick emergency assistance
+        through location sharing and trusted contacts.
+    </p>
+
+</section>
+
+
+
+<!-- PROJECT OBJECTIVE -->
+
+<section class="about-grid">
+
+
+    <div class="about-card">
+
+        <div class="about-icon">🎯</div>
+
+        <h2>Project Objective</h2>
+
+        <p>
+            The main objective of SafeBelt is to provide
+            a discreet and reliable emergency safety
+            solution that can help a user communicate
+            their location to trusted contacts during
+            an emergency.
+        </p>
+
+    </div>
+
+
+
+    <div class="about-card">
+
+        <div class="about-icon">⚙️</div>
+
+        <h2>How It Works</h2>
+
+        <p>
+            When the physical SOS button on the belt
+            is pressed, the microcontroller activates
+            the GPS and GSM modules to obtain the
+            location and prepare an emergency alert.
+        </p>
+
+    </div>
+
+
+
+    <div class="about-card">
+
+        <div class="about-icon">🔐</div>
+
+        <h2>Privacy Focused</h2>
+
+        <p>
+            SafeBelt is designed so that location
+            information is shared only when an
+            emergency is triggered. Continuous
+            location tracking is not required.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- SYSTEM COMPONENTS -->
+
+<section class="components-section">
+
+
+    <div class="about-label">
+        SYSTEM COMPONENTS
+    </div>
+
+
+    <h2>
+        Technology inside SafeBelt
+    </h2>
+
+
+
+    <div class="component-grid">
+
+
+        <div class="component-card">
+
+            <div>🧠</div>
+
+            <h3>ESP32 / Arduino Nano</h3>
+
+            <p>
+                Controls the emergency detection
+                and communication process.
+            </p>
+
+        </div>
+
+
+
+        <div class="component-card">
+
+            <div>📍</div>
+
+            <h3>GPS Module</h3>
+
+            <p>
+                Obtains the current geographical
+                location during an emergency.
+            </p>
+
+        </div>
+
+
+
+        <div class="component-card">
+
+            <div>📱</div>
+
+            <h3>GSM Module</h3>
+
+            <p>
+                Helps send emergency communication
+                to trusted contacts.
+            </p>
+
+        </div>
+
+
+
+        <div class="component-card">
+
+            <div>🚨</div>
+
+            <h3>SOS Button</h3>
+
+            <p>
+                A hidden physical button used to
+                trigger the emergency process.
+            </p>
+
+        </div>
+
+
+
+        <div class="component-card">
+
+            <div>🔔</div>
+
+            <h3>Buzzer / Vibration</h3>
+
+            <p>
+                Provides confirmation that the
+                emergency action has been triggered.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- PROJECT ARCHITECTURE -->
+
+<section class="architecture-section">
+
+
+    <div class="about-label">
+        PROJECT ARCHITECTURE
+    </div>
+
+
+    <h2>
+        How SafeBelt communicates
+    </h2>
+
+
+    <p class="architecture-intro">
+
+        The SafeBelt system connects the emergency button,
+        microcontroller, GPS and GSM modules to provide
+        location-based emergency communication.
+
+    </p>
+
+
+
+    <div class="architecture-flow">
+
+
+        <!-- 01 -->
+
+        <div class="architecture-card">
+
+            <div class="architecture-number">
+                01
+            </div>
+
+            <div class="architecture-icon">
+                🚨
+            </div>
+
+            <h3>
+                SOS Button
+            </h3>
+
+            <p>
+                Physical hidden button is pressed
+                during an emergency.
+            </p>
+
+        </div>
+
+
+
+        <div class="architecture-arrow">
+            →
+        </div>
+
+
+
+        <!-- 02 -->
+
+        <div class="architecture-card">
+
+            <div class="architecture-number">
+                02
+            </div>
+
+            <div class="architecture-icon">
+                🧠
+            </div>
+
+            <h3>
+                ESP32 / Arduino
+            </h3>
+
+            <p>
+                Detects the SOS trigger and
+                controls the emergency process.
+            </p>
+
+        </div>
+
+
+
+        <div class="architecture-arrow">
+            →
+        </div>
+
+
+
+        <!-- 03 -->
+
+        <div class="architecture-card">
+
+            <div class="architecture-number">
+                03
+            </div>
+
+            <div class="architecture-icon">
+                📍
+            </div>
+
+            <h3>
+                GPS Module
+            </h3>
+
+            <p>
+                Obtains the current geographical
+                location of the user.
+            </p>
+
+        </div>
+
+
+
+        <div class="architecture-arrow">
+            →
+        </div>
+
+
+
+        <!-- 04 -->
+
+        <div class="architecture-card">
+
+            <div class="architecture-number">
+                04
+            </div>
+
+            <div class="architecture-icon">
+                📡
+            </div>
+
+            <h3>
+                GSM Module
+            </h3>
+
+            <p>
+                Prepares emergency communication
+                with the location details.
+            </p>
+
+        </div>
+
+
+
+        <div class="architecture-arrow">
+            →
+        </div>
+
+
+
+        <!-- 05 -->
+
+        <div class="architecture-card">
+
+            <div class="architecture-number">
+                05
+            </div>
+
+            <div class="architecture-icon">
+                📱
+            </div>
+
+            <h3>
+                Trusted Contacts
+            </h3>
+
+            <p>
+                Emergency alert is communicated
+                to predefined trusted contacts.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- KEY FEATURES -->
+
+<section class="features-about-section">
+
+
+    <div class="about-label">
+        KEY FEATURES
+    </div>
+
+
+    <h2>
+        What makes SafeBelt useful
+    </h2>
+
+
+
+    <div class="features-about-grid">
+
+
+        <!-- FEATURE 1 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                🚨
+            </div>
+
+            <h3>
+                Emergency Detection
+            </h3>
+
+            <p>
+                Detects an emergency when the physical
+                SOS button on the safety belt is pressed.
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURE 2 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                📍
+            </div>
+
+            <h3>
+                Location Sharing
+            </h3>
+
+            <p>
+                Provides the user's geographical location
+                during an emergency situation.
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURE 3 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                👥
+            </div>
+
+            <h3>
+                Trusted Contacts
+            </h3>
+
+            <p>
+                Stores predefined contacts who can receive
+                emergency communication.
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURE 4 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                🗃️
+            </div>
+
+            <h3>
+                Emergency History
+            </h3>
+
+            <p>
+                Maintains emergency records so previous
+                alerts can be reviewed when required.
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURE 5 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                🔐
+            </div>
+
+            <h3>
+                Privacy Focused
+            </h3>
+
+            <p>
+                Location sharing is intended for emergency
+                situations instead of continuous tracking.
+            </p>
+
+        </div>
+
+
+
+        <!-- FEATURE 6 -->
+
+        <div class="features-about-card">
+
+            <div class="features-about-icon">
+                🌐
+            </div>
+
+            <h3>
+                Web Dashboard
+            </h3>
+
+            <p>
+                Provides a simple dashboard to view safety
+                information, contacts and emergency records.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- EMERGENCY WORKFLOW -->
+
+<section class="working-section">
+
+
+    <div class="about-label">
+        EMERGENCY WORKFLOW
+    </div>
+
+
+    <h2>
+        From SOS to emergency alert
+    </h2>
+
+
+
+    <div class="working-flow">
+
+
+        <div class="working-card">
+
+            <span>01</span>
+
+            <div>🚨</div>
+
+            <h3>SOS Trigger</h3>
+
+            <p>
+                Physical SOS button is pressed.
+            </p>
+
+        </div>
+
+
+
+        <div class="working-arrow">
+            →
+        </div>
+
+
+
+        <div class="working-card">
+
+            <span>02</span>
+
+            <div>📍</div>
+
+            <h3>GPS Location</h3>
+
+            <p>
+                Current location is obtained.
+            </p>
+
+        </div>
+
+
+
+        <div class="working-arrow">
+            →
+        </div>
+
+
+
+        <div class="working-card">
+
+            <span>03</span>
+
+            <div>📡</div>
+
+            <h3>GSM Communication</h3>
+
+            <p>
+                Emergency message is prepared.
+            </p>
+
+        </div>
+
+
+
+        <div class="working-arrow">
+            →
+        </div>
+
+
+
+        <div class="working-card">
+
+            <span>04</span>
+
+            <div>📱</div>
+
+            <h3>Trusted Contacts</h3>
+
+            <p>
+                Alert is communicated to trusted contacts.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- FINAL MESSAGE -->
+
+<section class="about-final">
+
+    <h2>
+        Safety should be simple.
+    </h2>
+
+    <p>
+        SafeBelt combines IoT technology, location
+        services and emergency communication into
+        one wearable safety concept.
+    </p>
+
+</section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-brand">
+        🛡 SafeBelt
+    </div>
+
+    <p>
+        IoT-Based Smart Women's Safety Belt
+    </p>
+
+    <span>
+        © 2026 SafeBelt. Smart technology for safer lives.
+    </span>
+
+</footer>
+
+
+</body>
+
+</html>

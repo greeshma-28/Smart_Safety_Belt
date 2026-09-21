@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - AstraSafe</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-wrapper">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+            <div class="login-brand">
+                <div class="brand-icon">🛡</div>
+
+                <div>
+                    <h2>AstraSafe</h2>
+                    <span>Smart Safety System</span>
+                </div>
+            </div>
+
+            <div class="login-message">
+
+                <div class="login-label">
+                    CREATE YOUR ACCOUNT
+                </div>
+
+                <h1>
+                    Start your<br>
+                    <span>safer journey.</span>
+                </h1>
+
+                <p>
+                    Create your AstraSafe account to access
+                    your personal safety dashboard, emergency
+                    monitoring and trusted contacts.
+                </p>
+
+            </div>
+
+            <div class="login-features">
+
+                <div>
+                    <span>✓</span>
+                    <p>Personal safety dashboard</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Trusted contact management</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Privacy-focused protection</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-card">
+
+            <div class="login-card-icon">
+                🛡
+            </div>
+
+            <div class="login-card-heading">
+
+                <span>
+                    NEW USER
+                </span>
+
+                <h2>
+                    Create Account
+                </h2>
+
+                <p>
+                    Register to use your AstraSafe dashboard.
+                </p>
+
+            </div>
+
+
+            <form method="POST" action="/register">
+
+                <div class="login-input">
+
+                    <label>
+                        FULL NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-input">
+
+                    <label>
+                        USERNAME
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Create a username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-input">
+
+                    <label>
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="login-submit">
+                    Create Account →
+                </button>
+
+            </form>
+
+
+            <div class="login-security">
+
+                <span>🔒</span>
+
+                <p>
+                    Your account information is stored
+                    securely in the AstraSafe database.
+                </p>
+
+            </div>
+
+
+            <a href="/login" class="back-home">
+                ← Back to Sign In
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer class="login-footer">
+
+        <span>
+            © 2026 AstraSafe
+        </span>
+
+        <span>
+            Smart technology for safer lives.
+        </span>
+
+    </footer>
+
+</body>
+
+</html>

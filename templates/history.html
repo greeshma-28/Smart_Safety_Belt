@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency History - SafeBelt</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🛡
+        </div>
+
+        <div>
+            <h2>SafeBelt</h2>
+            <span>Smart Safety System</span>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/history" class="active">
+            History
+        </a>
+
+        <a href="/contacts">
+            Contacts
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+        <a href="/login" class="login-link">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<main class="history-page">
+
+
+    <section class="history-header">
+
+        <div>
+
+            <div class="history-label">
+                SAFETY ACTIVITY
+            </div>
+
+            <h1>
+                Emergency <span>History.</span>
+            </h1>
+
+            <p>
+                View all emergency events recorded by your
+                Smart Safety Belt system.
+            </p>
+
+        </div>
+
+
+        <div class="history-status">
+            📋 Activity Log
+        </div>
+
+    </section>
+
+
+
+    <section class="history-card">
+
+
+        <div class="history-card-header">
+
+            <div>
+
+                <span>
+                    EMERGENCY RECORDS
+                </span>
+
+                <h2>
+                    All Emergency Alerts
+                </h2>
+
+            </div>
+
+
+            <div class="history-count">
+
+                {{ emergencies|length }}
+
+            </div>
+
+        </div>
+
+
+
+        {% if emergencies %}
+
+
+        <div class="history-table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            LOCATION
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            DATE & TIME
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for emergency in emergencies %}
+
+
+                    <tr>
+
+
+                        <td>
+
+                            <span class="history-id">
+
+                                #{{ emergency[0] }}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <td>
+
+                            <div class="history-location">
+
+                                <span>
+
+                                    📍 {{ emergency[1] }}
+
+                                </span>
+
+                                <small>
+
+                                    {{ emergency[2] }}
+
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+
+                        <td>
+
+                            <span class="history-status-badge">
+
+                                ● {{ emergency[3] }}
+
+                            </span>
+
+                        </td>
+
+
+
+                        <td>
+
+                            <span class="history-date">
+
+                                {{ emergency[4] }}
+
+                            </span>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="history-empty">
+
+
+            <div class="history-empty-icon">
+
+                📋
+
+            </div>
+
+
+            <h3>
+
+                No Emergency Records
+
+            </h3>
+
+
+            <p>
+
+                Emergency activity will appear here
+                when the physical SOS button is triggered.
+
+            </p>
+
+
+        </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+
+    <section class="history-note">
+
+
+        <div class="history-note-icon">
+
+            🔐
+
+        </div>
+
+
+        <div>
+
+            <h3>
+
+                Privacy Protected
+
+            </h3>
+
+
+            <p>
+
+                Your location is shared only during an
+                emergency. SafeBelt does not continuously
+                monitor your location.
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+
+    <div class="footer-brand">
+
+        🛡 SafeBelt
+
+    </div>
+
+
+    <p>
+
+        IoT-Based Smart Women's Safety Belt
+
+    </p>
+
+
+    <span>
+
+        © 2026 SafeBelt. Smart technology for safer lives.
+
+    </span>
+
+
+</footer>
+
+
+</body>
+
+</html>

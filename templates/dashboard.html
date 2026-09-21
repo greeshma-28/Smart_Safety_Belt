@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - SafeBelt</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🛡
+        </div>
+
+        <div>
+            <h2>SafeBelt</h2>
+            <span>Smart Safety System</span>
+        </div>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard" class="active">
+            Dashboard
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/contacts">
+            Contacts
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+        <a href="/login" class="login-link">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<main class="dashboard-page">
+
+
+    <!-- HEADER -->
+
+    <section class="dashboard-header">
+
+        <div>
+
+            <div class="dashboard-label">
+                SAFETY CONTROL CENTER
+            </div>
+
+            <h1>
+                Welcome to your
+                <span>Safety Dashboard.</span>
+            </h1>
+
+            <p>
+                Monitor your Smart Safety Belt, emergency activity
+                and safety information from one place.
+            </p>
+
+        </div>
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <div>
+
+                <strong>System Active</strong>
+
+                <small>
+                    Monitoring enabled
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STAT CARDS
+    ========================= -->
+
+    <section class="dashboard-stats">
+
+
+        <!-- DEVICE -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    DEVICE STATUS
+                </span>
+
+                <div class="stat-icon">
+                    ⚡
+                </div>
+
+            </div>
+
+            <h2>
+                Connected
+            </h2>
+
+            <p>
+                Hardware connection
+            </p>
+
+            <div class="stat-line"></div>
+
+            <small>
+                ESP32 device
+            </small>
+
+        </div>
+
+
+        <!-- SOS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    SOS STATUS
+                </span>
+
+                <div class="stat-icon">
+                    🚨
+                </div>
+
+            </div>
+
+            <h2>
+
+                {% if latest_emergency %}
+
+                    {{ latest_emergency[0] }}
+
+                {% else %}
+
+                    Safe
+
+                {% endif %}
+
+            </h2>
+
+            <p>
+                Latest emergency state
+            </p>
+
+            <div class="stat-line"></div>
+
+            <small>
+                Emergency monitoring
+            </small>
+
+        </div>
+
+
+        <!-- EMERGENCY ALERTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    EMERGENCY ALERTS
+                </span>
+
+                <div class="stat-icon">
+                    🔔
+                </div>
+
+            </div>
+
+            <h2>
+                {{ emergency_count }}
+            </h2>
+
+            <p>
+                Recorded emergencies
+            </p>
+
+            <div class="stat-line"></div>
+
+            <small>
+                Stored in database
+            </small>
+
+        </div>
+
+
+        <!-- GPS -->
+
+        <div class="stat-card">
+
+            <div class="stat-top">
+
+                <span>
+                    GPS LOCATION
+                </span>
+
+                <div class="stat-icon">
+                    📍
+                </div>
+
+            </div>
+
+            <h2>
+                Active
+            </h2>
+
+            <p>
+                Location service
+            </p>
+
+            <div class="stat-line"></div>
+
+            <small>
+                NEO-6M GPS module
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TEST EMERGENCY
+    ========================= -->
+
+    <section class="test-emergency-section">
+
+        <div class="test-emergency-card">
+
+            <div class="test-emergency-content">
+
+                <span class="test-label">
+                    DEMONSTRATION MODE
+                </span>
+
+                <h2>
+                    Test Emergency Detection
+                </h2>
+
+                <p>
+                    Simulate an emergency event using your current
+                    browser location. The event will be stored in
+                    the SafeBelt emergency database.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="test-emergency-button"
+                onclick="testEmergency()">
+
+                🚨 TEST EMERGENCY
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MONITORING + LOCATION
+    ========================= -->
+
+    <section class="monitor-grid">
+
+
+        <!-- EMERGENCY MONITORING -->
+
+        <div class="monitor-card emergency-monitor">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span>
+                        LIVE MONITORING
+                    </span>
+
+                    <h2>
+                        Emergency Status
+                    </h2>
+
+                </div>
+
+                <div class="live-indicator">
+                    ● LIVE
+                </div>
+
+            </div>
+
+
+            <div class="monitor-status">
+
+                <div class="big-status-icon">
+                    🚨
+                </div>
+
+                <div>
+
+                    <h3>
+
+                        {% if latest_emergency %}
+
+                            {{ latest_emergency[0] }}
+
+                        {% else %}
+
+                            No Emergency Detected
+
+                        {% endif %}
+
+                    </h3>
+
+                    <p>
+                        System is currently monitoring
+                        the Smart Safety Belt.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="monitor-info">
+
+                <div>
+
+                    <span>ALERT SYSTEM</span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>LOCATION SHARING</span>
+
+                    <strong>
+                        Emergency Only
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="monitor-card location-monitor">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <span>
+                        GPS INFORMATION
+                    </span>
+
+                    <h2>
+                        Current Location
+                    </h2>
+
+                </div>
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+            </div>
+
+
+            <div class="coordinates">
+
+                <div class="coordinate-box">
+
+                    <span>
+                        LATITUDE
+                    </span>
+
+                    <strong id="latitude">
+                        Getting location...
+                    </strong>
+
+                </div>
+
+
+                <div class="coordinate-box">
+
+                    <span>
+                        LONGITUDE
+                    </span>
+
+                    <strong id="longitude">
+                        Getting location...
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p class="location-note">
+                Location is displayed for demonstration.
+                Emergency location sharing is activated
+                only when the safety belt SOS is triggered.
+            </p>
+
+
+            <a id="map-link"
+               href="#"
+               target="_blank"
+               class="map-button">
+
+                📍 Open Location in Google Maps →
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RECENT HISTORY
+    ========================= -->
+
+    <section class="dashboard-history">
+
+        <div class="history-header">
+
+            <div>
+
+                <span>
+                    ACTIVITY LOG
+                </span>
+
+                <h2>
+                    Recent Emergency History
+                </h2>
+
+            </div>
+
+
+            <a href="/history">
+                View Full History →
+            </a>
+
+        </div>
+
+
+        {% if recent_emergencies %}
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            LOCATION
+                        </th>
+
+                        <th>
+                            STATUS
+                        </th>
+
+                        <th>
+                            DATE & TIME
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for emergency in recent_emergencies %}
+
+                    <tr>
+
+                        <td>
+
+                            <span class="id-badge">
+                                #{{ emergency[0] }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="location-data">
+
+                                <span>
+                                    {{ emergency[1] }}
+                                </span>
+
+                                <small>
+                                    {{ emergency[2] }}
+                                </small>
+
+                            </div>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="status-badge-table">
+
+                                ● {{ emergency[3] }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="date-time">
+                                {{ emergency[4] }}
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-history">
+
+            <div>
+                📋
+            </div>
+
+            <h3>
+                No Emergency Records
+            </h3>
+
+            <p>
+                Emergency activity will appear here.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================= -->
+
+    <section class="quick-section">
+
+        <div class="quick-heading">
+
+            <span>
+                SAFETY MANAGEMENT
+            </span>
+
+            <h2>
+                Quick Access
+            </h2>
+
+        </div>
+
+
+        <div class="quick-grid">
+
+
+            <a href="/contacts" class="quick-card">
+
+                <div class="quick-icon">
+                    👥
+                </div>
+
+                <div>
+
+                    <h3>
+                        Trusted Contacts
+                    </h3>
+
+                    <p>
+                        Manage emergency contacts
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <a href="/history" class="quick-card">
+
+                <div class="quick-icon">
+                    📜
+                </div>
+
+                <div>
+
+                    <h3>
+                        Emergency History
+                    </h3>
+
+                    <p>
+                        View all recorded alerts
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <a href="/about" class="quick-card">
+
+                <div class="quick-icon">
+                    🛡
+                </div>
+
+                <div>
+
+                    <h3>
+                        About SafeBelt
+                    </h3>
+
+                    <p>
+                        Learn how SafeBelt works
+                    </p>
+
+                </div>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     LOCATION + EMERGENCY SCRIPT
+========================= -->
+
+<script>
+
+    let currentLatitude = null;
+    let currentLongitude = null;
+
+
+    /* =========================
+       SHOW LOCATION
+    ========================= */
+
+    function showLocation(position) {
+
+        currentLatitude =
+            position.coords.latitude;
+
+        currentLongitude =
+            position.coords.longitude;
+
+
+        document.getElementById("latitude").textContent =
+            currentLatitude.toFixed(6);
+
+        document.getElementById("longitude").textContent =
+            currentLongitude.toFixed(6);
+
+
+        const mapLink =
+            document.getElementById("map-link");
+
+
+        mapLink.href =
+            "https://www.google.com/maps?q="
+            + currentLatitude
+            + ","
+            + currentLongitude;
+
+
+        mapLink.style.display = "inline-flex";
+    }
+
+
+    /* =========================
+       LOCATION ERROR
+    ========================= */
+
+    function locationError(error) {
+
+        currentLatitude = null;
+        currentLongitude = null;
+
+
+        document.getElementById("latitude").textContent =
+            "Location unavailable";
+
+        document.getElementById("longitude").textContent =
+            "Location unavailable";
+
+        document.getElementById("map-link").style.display =
+            "none";
+    }
+
+
+    /* =========================
+       GET LOCATION
+    ========================= */
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(
+            showLocation,
+            locationError
+        );
+
+    } else {
+
+        document.getElementById("latitude").textContent =
+            "Not supported";
+
+        document.getElementById("longitude").textContent =
+            "Not supported";
+    }
+
+
+    /* =========================
+       TEST EMERGENCY
+    ========================= */
+
+    function testEmergency() {
+
+        const button =
+            document.querySelector(".test-emergency-button");
+
+
+        button.disabled = true;
+
+        button.innerText =
+            "📍 GETTING LOCATION...";
+
+
+        if (!navigator.geolocation) {
+
+            alert(
+                "GPS location is not supported by this browser."
+            );
+
+            button.disabled = false;
+
+            button.innerText =
+                "🚨 TEST EMERGENCY";
+
+            return;
+        }
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                const latitude =
+                    position.coords.latitude;
+
+                const longitude =
+                    position.coords.longitude;
+
+
+                button.innerText =
+                    "🚨 SENDING ALERT...";
+
+
+                fetch("/sos", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        latitude: latitude,
+                        longitude: longitude
+
+                    })
+
+                })
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    if (data.status === "Emergency Detected") {
+
+                        alert(
+                            "🚨 EMERGENCY DETECTED!\n\n" +
+                            "Location saved successfully.\n\n" +
+                            "The emergency has been recorded in the SafeBelt database."
+                        );
+
+
+                        window.location.href =
+                            "/dashboard";
+
+                    } else {
+
+                        alert(
+                            "Emergency could not be saved."
+                        );
+
+                        button.disabled = false;
+
+                        button.innerText =
+                            "🚨 TEST EMERGENCY";
+                    }
+
+                })
+
+                .catch(error => {
+
+                    console.error(error);
+
+                    alert(
+                        "Unable to connect to the SafeBelt server."
+                    );
+
+                    button.disabled = false;
+
+                    button.innerText =
+                        "🚨 TEST EMERGENCY";
+                });
+
+            },
+
+
+            function(error) {
+
+                alert(
+                    "Unable to get your location.\n\n" +
+                    "Please allow location permission in your browser and try again."
+                );
+
+
+                button.disabled = false;
+
+                button.innerText =
+                    "🚨 TEST EMERGENCY";
+            }
+
+        );
+    }
+
+</script>
+
+
+</body>
+</html>
+

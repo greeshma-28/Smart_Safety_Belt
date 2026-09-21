@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - AstraSafe</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="login-page">
+
+    <div class="login-wrapper">
+
+        <!-- LEFT SIDE -->
+
+        <div class="login-info">
+
+            <div class="login-brand">
+                <div class="brand-icon">🛡</div>
+
+                <div>
+                    <h2>AstraSafe</h2>
+                    <span>Smart Safety System</span>
+                </div>
+            </div>
+
+            <div class="login-message">
+
+                <div class="login-label">
+                    SECURE ACCESS
+                </div>
+
+                <h1>
+                    Your safety.<br>
+                    <span>Your control.</span>
+                </h1>
+
+                <p>
+                    Access your AstraSafe control center to
+                    monitor emergency activity, trusted
+                    contacts and safety information.
+                </p>
+
+            </div>
+
+            <div class="login-features">
+
+                <div>
+                    <span>✓</span>
+                    <p>Emergency monitoring</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Trusted contact management</p>
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    <p>Privacy-focused location sharing</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="login-card">
+
+            <div class="login-card-icon">
+                🔐
+            </div>
+
+            <div class="login-card-heading">
+
+                <span>
+                    SAFE ACCESS
+                </span>
+
+                <h2>
+                    Welcome back
+                </h2>
+
+                <p>
+                    Sign in to your AstraSafe dashboard.
+                </p>
+
+            </div>
+
+
+            <form method="POST" action="/login">
+
+                <div class="login-input">
+
+                    <label>
+                        USERNAME
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-input">
+
+                    <label>
+                        PASSWORD
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="login-submit">
+                    Sign In →
+                </button>
+
+            </form>
+
+
+            <!-- CREATE ACCOUNT -->
+
+            <div class="create-account">
+
+                <p>
+                    New to AstraSafe?
+                </p>
+
+                <a href="/register">
+                    Create an Account →
+                </a>
+
+            </div>
+
+
+            <div class="login-security">
+
+                <span>🔒</span>
+
+                <p>
+                    Secure access to your personal
+                    safety dashboard.
+                </p>
+
+            </div>
+
+
+            <a href="/" class="back-home">
+                ← Back to AstraSafe Home
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer class="login-footer">
+
+        <span>
+            © 2026 AstraSafe
+        </span>
+
+        <span>
+            Smart technology for safer lives.
+        </span>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trusted Contacts - SafeBelt</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🛡
+        </div>
+
+        <div>
+            <h2>SafeBelt</h2>
+            <span>Smart Safety System</span>
+        </div>
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/dashboard">
+            Dashboard
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/contacts" class="active">
+            Contacts
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+        <a href="/login" class="login-link">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- CONTACTS PAGE -->
+
+<main class="contacts-page">
+
+
+    <!-- HEADER -->
+
+    <section class="contacts-header">
+
+        <div>
+
+            <div class="contacts-label">
+                EMERGENCY MANAGEMENT
+            </div>
+
+            <h1>
+                Trusted <span>Contacts.</span>
+            </h1>
+
+            <p>
+                Manage the people who should receive an emergency
+                alert when your Smart Safety Belt is triggered.
+            </p>
+
+        </div>
+
+
+        <div class="privacy-badge">
+            🔐 Privacy Protected
+        </div>
+
+    </section>
+
+
+
+    <!-- MAIN GRID -->
+
+    <section class="contacts-layout">
+
+
+        <!-- ADD CONTACT -->
+
+        <div class="add-contact-card">
+
+            <div class="card-icon">
+                +
+            </div>
+
+            <h2>
+                Add Trusted Contact
+            </h2>
+
+            <p>
+                Add a family member, friend or person you trust
+                for emergency communication.
+            </p>
+
+
+            <form method="POST">
+
+                <div class="input-group">
+
+                    <label>
+                        CONTACT NAME
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="e.g. Mom"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        MOBILE NUMBER
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="mobile"
+                        placeholder="Enter mobile number"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="add-contact-btn">
+                    + Add Contact
+                </button>
+
+            </form>
+
+
+            <div class="contact-security">
+
+                <span>🔒</span>
+
+                <p>
+                    Contact information is used only for
+                    emergency communication.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTACT LIST -->
+
+        <div class="saved-contacts-card">
+
+            <div class="saved-header">
+
+                <div>
+
+                    <span>
+                        CONTACT DIRECTORY
+                    </span>
+
+                    <h2>
+                        Saved Contacts
+                    </h2>
+
+                </div>
+
+
+                <div class="contact-count">
+                    {{ contacts|length }}
+                </div>
+
+            </div>
+
+
+
+            {% if contacts %}
+
+
+            <div class="contact-list">
+
+
+                {% for contact in contacts %}
+
+
+                <div class="contact-item">
+
+
+                    <div class="contact-avatar">
+                        {{ contact[1][0]|upper }}
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <h3>
+                            {{ contact[1] }}
+                        </h3>
+
+                        <p>
+                            📱 {{ contact[2] }}
+                        </p>
+
+                    </div>
+
+
+                    <!-- DELETE CONTACT -->
+
+                    <form
+                        method="POST"
+                        action="/delete_contact/{{ contact[0] }}"
+                    >
+
+                        <button
+                            type="submit"
+                            class="delete-contact"
+                            title="Delete Contact"
+                        >
+                            🗑 Delete
+                        </button>
+
+                    </form>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% else %}
+
+
+            <div class="no-contacts">
+
+                <div class="empty-icon">
+                    👥
+                </div>
+
+                <h3>
+                    No Trusted Contacts
+                </h3>
+
+                <p>
+                    Add your first trusted contact to prepare
+                    your emergency communication system.
+                </p>
+
+            </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- HOW CONTACTS WORK -->
+
+    <section class="contact-info-section">
+
+
+        <div class="info-heading">
+
+            <span>
+                EMERGENCY COMMUNICATION
+            </span>
+
+            <h2>
+                How trusted contacts work
+            </h2>
+
+        </div>
+
+
+
+        <div class="contact-flow">
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    01
+                </div>
+
+                <div class="flow-icon">
+                    🚨
+                </div>
+
+                <h3>
+                    Emergency Triggered
+                </h3>
+
+                <p>
+                    The physical SOS button on the belt
+                    is pressed during an emergency.
+                </p>
+
+            </div>
+
+
+
+            <div class="flow-arrow">
+                →
+            </div>
+
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    02
+                </div>
+
+                <div class="flow-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Location Obtained
+                </h3>
+
+                <p>
+                    GPS obtains the current location
+                    of the user.
+                </p>
+
+            </div>
+
+
+
+            <div class="flow-arrow">
+                →
+            </div>
+
+
+
+            <div class="flow-item">
+
+                <div class="flow-number">
+                    03
+                </div>
+
+                <div class="flow-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Alert Prepared
+                </h3>
+
+                <p>
+                    The GSM module prepares the emergency
+                    communication for trusted contacts.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-brand">
+        🛡 SafeBelt
+    </div>
+
+    <p>
+        IoT-Based Smart Women's Safety Belt
+    </p>
+
+    <span>
+        © 2026 SafeBelt. Smart technology for safer lives.
+    </span>
+
+</footer>
+
+
+</body>
+
+</html>
